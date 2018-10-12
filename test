@@ -1,0 +1,27 @@
+<?php
+// $defined_cli_opts = [
+// 	"dir:",
+// 	"start-date:",
+// 	"end-date:",
+// 	"allowed-file-type:",
+// 	"max-file-size:",
+// ];
+
+// $args = getopt('', $defined_cli_opts);
+
+// print_r($args);
+
+// $options = getopt("f:hp:");
+
+// var_dump($options);
+
+require __DIR__.'/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use App\Commands\CreateUserCommand;
+
+$app = new Application();
+
+$app->add(new CreateUserCommand());
+$app->add(new App\Commands\SayHelloWorld());
+$app->run();
