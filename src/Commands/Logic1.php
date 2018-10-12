@@ -25,8 +25,11 @@ class Logic1 extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-    	$text = 'Logic 1 '.$input->getOption('soal').' range '.$input->getArgument('range');
+    	// $text = 'Logic 1 '.$input->getOption('soal').' range '.$input->getArgument('range');
+    	// $output->writeln($text);
 
-    	$output->writeln($text);
+    	$result = \App\Logic\Logic1::result($input->getOption('soal'), $input->getArgument('range'));
+
+    	$output->writeln($result);
     }
 }
