@@ -6,7 +6,7 @@ namespace App\Logic;
  */
 class Logic
 {
-	protected static $result = '';
+	protected static $result = [];
 
 	public static function result(int $soal, int $range, $param1=null, $param2=null, $param3=null)
 	{
@@ -17,6 +17,16 @@ class Logic
     		return 'Tidak ada soal '.$soal.'!';
     	}
 
-    	return self::$result;
+    	self::array2D(self::$result);
+	}
+
+	protected static function array2D($array)
+	{
+		for ($i = 0; $i < count($array); $i++) {
+			for ($j = 0; $j < count($array); $j++) {
+				echo $array[$i][$j];
+			}
+			echo "\n";
+		}
 	}
 }
