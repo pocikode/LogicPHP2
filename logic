@@ -5,4 +5,5 @@ use Symfony\Component\Console\Application;
 
 $app = new Application();
 $app->add(new App\Commands\Logic1);
+$app->add(new App\Commands\Logic2);
 $app->run();
