@@ -6,77 +6,143 @@ namespace App\Logic;
  */
 class Logic2 extends Logic
 {
-    public static function result($soal,$range)
+    protected function soal1($range)
     {
-    	switch ($soal) {
-    		case 1: self::soal1($range); break; case 2: self::soal2($range); break; case 3: self::soal3($range); break; case 4: self::soal4($range); break; case 5: self::soal5($range); break; case 6: self::soal6($range); break; case 7: self::soal7($range); break; case 8: self::soal8($range); break; default: die("Tidak ada soal $soal! \n"); break;
-    	}
-    	return self::$result;
-    }
-
-    private function soal1($range)
-    {
-    	for ($y = 1; $y <= $range; $y++) {
-    		for ($x = 1; $x <= $range; $x++) {
-    			$number = ($y*2)-1;
-    			if ($y==$x) {
-    				self::$result .= $number;
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			$number = ($i*2)+1;
+    			if ($i==$j) {
+    				self::$result[$i][$j] = $number;
     			} else {
-    				self::$result .= "-";
+    				self::$result[$i][$j] = " ";
     			}
     		}
-    		self::$result .= "\n";
     	}
     }
 
-    private function soal2($range)
+    protected function soal2($range)
     {
-    	for ($y = 1; $y <= $range; $y++) {
-    		for ($x = 1; $x <= $range; $x++) {
-    			if ($y==$range-($x-1)) {
-    				$number = ($x*2)-2;
-    				self::$result .= $number;
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			if ($j==$range-$i-1) {
+    				$number = ($j*2);
+    				self::$result[$i][$j] = $number;
     			} else {
-    				self::$result .= "-";
+    				self::$result[$i][$j] = " ";
     			}
     		}
-    		self::$result .= "\n";
     	}
     }
 
-    private function soal3($range)
+    protected function soal3($range)
     {
-    	for ($y = 1; $y <= $range; $y++) {
-    		for ($x = 1; $x <= $range; $x++) {
-    			if ($y==$x) {
-    				$number = ($y*2)-1;
-    				self::$result .= $number;
-    			} elseif ($y==$range-($x-1)) {
-    				$number = ($x*2)-2;
-    				self::$result .= $number;
+    	$range = ($range%2 == 0) ? $range+=1 : $range;
+
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			if ($i==$j) {
+    				$number = ($i*2)+1;
+    				self::$result[$i][$j] = $number;
+    			} elseif ($i==$range-$j-1) {
+    				$number = ($j*2);
+    				self::$result[$i][$j] = $number;
     			} else {
-    				self::$result .= "-";
+    				self::$result[$i][$j] = " ";
     			}
     		}
-    		self::$result .= "\n";
     	}
     }
 
-    private function soal4($range)
+    protected function soal4($range)
     {
-    	for ($y = 1; $y <= $range; $y++) {
-    		for ($x = 1; $x <= $range; $x++) {
-    			if ($y==$x) {
-    				$number = ($y*2)-1;
-    				self::$result .= $number;
-    			} elseif ($y==$range-($x-1)) {
-    				$number = ($x*2)-2;
-    				self::$result .= $number;
+    	$range = ($range%2 == 0) ? $range+=1 : $range;
+    	
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			if ($i==$j || $j==floor($range/2)) {
+    				$number = ($i*2)+1;
+    				self::$result[$i][$j] = $number;
+    			} elseif ($i==$range-$j-1 || $i==floor($range/2)) {
+    				$number = ($j*2);
+    				self::$result[$i][$j] = $number;
     			} else {
-    				self::$result .= "-";
+    				self::$result[$i][$j] = " ";
     			}
     		}
-    		self::$result .= "\n";
+    	}
+    }
+
+    protected function soal5($range)
+    {
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			if ($j <= $i) {
+    				$number = ($j*2)+1;
+    				self::$result[$i][$j] = $number;
+    			} else {
+    				self::$result[$i][$j] = " ";
+    			}
+    		}
+    	}
+    }
+
+    protected function soal6($range)
+    {
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			if ($j >= $range-$i-1) {
+    				$number = ($range-1)*2 - ($i*2);
+    				self::$result[$i][$j] = $number;
+    			} else {
+    				self::$result[$i][$j] = " ";
+    			}
+    		}
+    	}
+    }
+
+    protected function soal7($range)
+    {
+    	$range = ($range%2 == 0) ? $range+=1 : $range;
+
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			if ($i==$j) {
+    				$number = $j*2+1;
+    				self::$result[$i][$j] = $number;
+    			} elseif ($j==$range-$i-1) {
+    				$number = ($j*2);
+    				self::$result[$i][$j] = $number;
+    			} elseif ($j >= $i && $j <= $range-$i-1) {
+    				self::$result[$i][$j] = "A";
+    			} elseif ($j <= $i && $j >= $range-$i-1) {
+    				self::$result[$i][$j] = "B";
+    			} else {
+    				self::$result[$i][$j] = " ";
+    			}
+    		}
+    	}
+    }
+
+    protected function soal8($range)
+    {
+    	$range = ($range%2 == 0) ? $range+=1 : $range;
+
+    	for ($i = 0; $i < $range; $i++) {
+    		for ($j = 0; $j < $range; $j++) {
+    			if ($i==$j) {
+    				$number = $j*2+1;
+    				self::$result[$i][$j] = $number;
+    			} elseif ($j==$range-$i-1) {
+    				$number = ($j*2);
+    				self::$result[$i][$j] = $number;
+    			} elseif ($j <= $i && $j <= $range-$i-1) {
+    				self::$result[$i][$j] = "A";
+    			} elseif ($j >= $i && $j >= $range-$i-1) {
+    				self::$result[$i][$j] = "B";
+    			} else {
+    				self::$result[$i][$j] = " ";
+    			}
+    		}
     	}
     }
 }

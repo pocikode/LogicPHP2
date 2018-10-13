@@ -14,6 +14,8 @@ class Logic1 extends Logic
     			}
     		}
     	}
+
+    	print_r(self::$result);
     }
 
     protected function soal2($range)
@@ -111,11 +113,11 @@ class Logic1 extends Logic
     	for ($y = 0; $y < $range; $y++) {
     		for ($x = 0; $x < $range; $x++) {
     			if ($x <= $y && $y <= $range-$x-1) {
-    				self::$result[$y][$x] .= "*";
+    				self::$result[$y][$x] = "*";
     			} elseif ($x >= $y && $y >= $range-$x-1) {
-    				self::$result[$y][$x] .= "*";
+    				self::$result[$y][$x] = "*";
     			} else {
-    				self::$result[$y][$x] .= " ";
+    				self::$result[$y][$x] = " ";
     			}
     		}
     	}
