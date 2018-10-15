@@ -42,7 +42,34 @@ class Logic3 extends Logic
 	//  KPK Function
 	protected function kpk($a, $b)
 	{
-		return ($a / self::gcd($a,$b)) * $b;
+		// return ($a / self::gcd($a,$b)) * $b;
+		$kpk = 0;
+		for ($i = 0; $i < $b; $i++) {
+			$kpk += $a;
+			if ($kpk%$b == 0) {
+				break;
+			}
+		}
+
+		return $kpk;
+	}
+
+	// Bilangan prima
+	protected function prima($bil)
+	{
+		$faktor = 0;
+
+		for ($i = 1; $i <= $bil; $i++) {
+			if ($bil%$i == 0) {
+				$faktor++;
+			}
+		}
+
+		if ($faktor == 2) {
+			return "Bilangan $bil merupakan bilangan prima. \n";
+		} else {
+			return "Bilangan $bil bukan bilangan prima. \n";
+		}
 	}
 
     protected function soal1($range)
@@ -59,14 +86,21 @@ class Logic3 extends Logic
         }
     }
 
-    public static function soal3($bil1, $bil2)
+    public static function soal3($range)
+	{
+		return "KPK dari 80 dan 12 adalah ".self::kpk(80,12);
+	}
+
+	protected function soal4($bil1) {
+		return self::prima($bil);
+	}
+
+    public static function soal5($bil1, $bil2)
     {
-    	echo "\n";
-    	echo "KPK dari $bil1 dan $bil2 adalah ".self::kpk($bil1,$bil2)."\n";
-    	echo "FPB dari $bil1 dan $bil2 adalah ".self::gcd($bil1,$bil2)."\n";
+    	return "FPB dari $bil1 dan $bil2 adalah ".self::gcd($bil1,$bil2)."\n";
     }
 
-    protected function soal4($range)
+    protected function soal6($range)
     {
     	for ($i = 0; $i < $range; $i++) {
     		for ($j = 0; $j < $range; $j++) {
@@ -87,7 +121,7 @@ class Logic3 extends Logic
     	}
     }
 
-    protected function soal5($range)
+    protected function soal7($range)
     {
     	$i = 0;
     	$j = 0;
@@ -107,7 +141,7 @@ class Logic3 extends Logic
     	}
     }
 
-    protected function soal6($range)
+    protected function soal8($range)
     {
     	$i = 0;
     	$j = 0;
@@ -131,7 +165,7 @@ class Logic3 extends Logic
     	}
     }
 
-    protected function soal7($range)
+    protected function soal9($range)
     {
     	$i = 0;
     	$j = 0;
@@ -156,7 +190,7 @@ class Logic3 extends Logic
     	}
     }
 
-    protected function soal8($range)
+    protected function soal10($range)
     {
     	$i = 0;
     	$j = 0;
