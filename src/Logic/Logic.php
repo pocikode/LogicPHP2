@@ -24,7 +24,7 @@ class Logic
 	{
 		if ($array2D) {
 			for ($i = 0; $i < count($array); $i++) {
-				for ($j = 0; $j < count($array); $j++) {
+				for ($j = 0; $j < count($array[0]); $j++) {
 					echo $array[$i][$j];
 				}
 				echo "\n";

@@ -27,7 +27,7 @@ class Logic3 extends Logic
 		}
 	}
 
-	// greates common divisor
+	// FPB / greates common divisor
 	protected function gcd($a, $b)
 	{
 		while ($b != 0) {

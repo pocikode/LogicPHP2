@@ -7,4 +7,5 @@ $app = new Application();
 $app->add(new App\Commands\Logic1);
 $app->add(new App\Commands\Logic2);
 $app->add(new App\Commands\Logic3);
+$app->add(new App\Commands\Logic4);
 $app->run();
