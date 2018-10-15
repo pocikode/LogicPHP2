@@ -8,25 +8,31 @@ class Logic
 {
 	protected static $result = [];
 
-	public static function result(int $soal, int $range, $param1=null, $param2=null, $param3=null)
+	public static function result(int $soal, int $range, $array2D=true, $param2=null, $param3=null)
 	{
 		if (method_exists(get_called_class(), "soal".$soal)) {
     		// call soal ke $soal
-    		call_user_func_array([get_called_class(), "soal".$soal], [$range,$param1,$param2,$param3]);
+    		call_user_func_array([get_called_class(), "soal".$soal], [$range,$array2D,$param2,$param3]);
     	} else {
     		return 'Tidak ada soal '.$soal.'!';
     	}
 
-    	self::array2D(self::$result);
+    	self::printArray(self::$result, $array2D);
 	}
 
-	protected static function array2D($array)
+	protected static function printArray($array, $array2D)
 	{
-		for ($i = 0; $i < count($array); $i++) {
-			for ($j = 0; $j < count($array); $j++) {
-				echo $array[$i][$j];
+		if ($array2D) {
+			for ($i = 0; $i < count($array); $i++) {
+				for ($j = 0; $j < count($array); $j++) {
+					echo $array[$i][$j];
+				}
+				echo "\n";
 			}
-			echo "\n";
+		} else {
+			for ($i = 0; $i < count($array); $i++) {
+				echo $array[$i].', ';
+			}
 		}
 	}
 }
