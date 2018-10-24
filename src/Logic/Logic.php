@@ -14,7 +14,7 @@ class Logic
     		// call soal ke $soal
     		call_user_func_array([get_called_class(), "soal".$soal], [$range,$array2D,$param2,$param3]);
     	} else {
-    		return 'Tidak ada soal '.$soal.'!';
+    		return 'Soal tidak ditemukan '.$soal.'!';
     	}
 
     	self::printArray(self::$result, $array2D);
